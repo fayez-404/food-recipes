@@ -27,6 +27,14 @@ public class JwtService {
         this.publicKey = KeyUtils.loadPublicKey("keys/local/public.key");
     }
 
+    public Long getAccessTokenExpiration() {
+        return accessTokenExpiration;
+    }
+
+    public Long getRefreshTokenExpiration() {
+        return refreshTokenExpiration;
+    }
+
     public String generateAccessToken(String email) {
         Map<String,Object> claims = new HashMap<>();
         claims.put("token_type","ACCESS_TOKEN");
