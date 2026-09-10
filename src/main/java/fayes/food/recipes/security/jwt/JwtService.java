@@ -1,5 +1,6 @@
 package fayes.food.recipes.security.jwt;
 
+import fayes.food.recipes.exception.InvalidRefreshTokenException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
@@ -76,10 +77,10 @@ public class JwtService {
     public String refreshAccessToken(String token){
         Claims claims = extractClaims(token);
         if (!"REFRESH_TOKEN".equals(claims.get("token_type",String.class))){
-            throw new RuntimeException("Invalid refresh token");
+            throw new InvalidRefreshTokenException("Invalid refresh token");
         }
         if (!claims.getExpiration().after(new Date())){
-            throw new RuntimeException("Invalid refresh token");
+            throw new InvalidRefreshTokenException("Invalid refresh token");
         }
         String email = claims.getSubject();
         return generateAccessToken(email);
