@@ -24,6 +24,11 @@ public class LoginRequest {
             ",and must be between 8 and 30 characters")
     private String password ;
 
+    public LoginRequest(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public String getEmail() {
         return email;
     }

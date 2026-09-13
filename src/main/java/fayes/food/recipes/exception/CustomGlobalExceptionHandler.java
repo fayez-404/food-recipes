@@ -1,5 +1,7 @@
 package fayes.food.recipes.exception;
 
+import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.JwtException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
@@ -81,6 +83,20 @@ public class CustomGlobalExceptionHandler {
         );
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorDetails);
     }
+
+    @ExceptionHandler(JwtException.class)
+    public ResponseEntity<ErrorDetails> handleJwtException(HttpServletRequest request,
+                                                           JwtException ex){
+        ErrorDetails errorDetails = new ErrorDetails(
+                HttpStatus.UNAUTHORIZED.value(),
+                ex.getMessage(),
+                LocalDateTime.now(),
+                request.getServletPath(),
+                ex.getClass().getName()
+        );
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorDetails);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleException(HttpServletRequest request,
                                                         Exception ex){

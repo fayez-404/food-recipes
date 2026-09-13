@@ -20,6 +20,10 @@ public class AuthenticationResponse {
         this.tokenType = tokenType;
     }
 
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
     public String getAccessToken() {
         return accessToken;
     }

@@ -31,6 +31,15 @@ public class RegisterRequest {
             ",and must be between 8 and 30 characters")
     private String password ;
 
+    public RegisterRequest(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    public RegisterRequest() {
+    }
+
     public String getUsername() {
         return username;
     }

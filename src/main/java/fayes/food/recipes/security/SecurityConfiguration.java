@@ -27,7 +27,12 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain (HttpSecurity http){
         return http.authorizeHttpRequests(
                 request -> request
-                        .requestMatchers("/api/v1/login","/api/v1/register").permitAll()
+                        .requestMatchers("/api/v1/login"
+                                ,"/api/v1/register"
+                                ,"/swagger-ui/**"
+                                ,"/v3/api-docs/**"
+                                ,"/v3/api-docs"
+                                ,"/api/v1/refresh-token").permitAll()
                         .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)

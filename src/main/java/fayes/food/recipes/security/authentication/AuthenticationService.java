@@ -1,6 +1,7 @@
 package fayes.food.recipes.security.authentication;
 
 import fayes.food.recipes.security.authentication.request.LoginRequest;
+import fayes.food.recipes.security.authentication.request.RefreshTokenRequest;
 import fayes.food.recipes.security.authentication.request.RegisterRequest;
 import fayes.food.recipes.security.authentication.response.AuthenticationResponse;
 import fayes.food.recipes.security.jwt.JwtService;
@@ -36,5 +37,9 @@ public class AuthenticationService {
 
     public void registerUserRequest(RegisterRequest request){
         userService.registerUser(request) ;
+    }
+
+    public String refreshAccessToken(RefreshTokenRequest refreshTokenRequest){
+        return jwtService.refreshAccessToken(refreshTokenRequest.getRefreshToken());
     }
 }
