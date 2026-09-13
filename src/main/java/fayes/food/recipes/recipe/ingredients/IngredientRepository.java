@@ -15,4 +15,9 @@ public interface IngredientRepository extends JpaRepository<Ingredient,Long>  {
     """,nativeQuery = true)
     public List<Ingredient> findSimilarIngredients(String ingredient);
 
+    @Query(value = """
+    SELECT * FROM ingredient WHERE ingredient LIKE '%'||:name||'%' LIMIT 10
+    """,nativeQuery = true)
+    public List<Ingredient> findIngredientsStartWithName(String Name);
+
 }

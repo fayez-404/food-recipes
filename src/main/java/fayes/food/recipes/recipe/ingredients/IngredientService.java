@@ -15,5 +15,8 @@ public class IngredientService {
     public List<Ingredient> getIngredientAndSimilarIngredient(String ingredient){
         return ingredientRepository.findSimilarIngredients(ingredient);
     }
+    public List<Ingredient> getIngredientsContainTheName(String name ){
+        return ingredientRepository.findIngredientsStartWithName(name);
+    }
 
 }
