@@ -14,7 +14,7 @@ public class SearchTerm {
     @Column(name = "search_term")
     private String searchTerm;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "recipe_search_term",
             joinColumns = @JoinColumn(name = "search_term_id"),

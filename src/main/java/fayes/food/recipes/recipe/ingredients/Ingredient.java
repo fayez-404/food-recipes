@@ -1,5 +1,6 @@
 package fayes.food.recipes.recipe.ingredients;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import fayes.food.recipes.recipe.Recipe;
 import jakarta.persistence.*;
 
@@ -13,7 +14,8 @@ public class Ingredient {
     private Long id ;
     private String ingredient ;
 
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "recipe_ingredient",
             joinColumns = @JoinColumn(name = "ingredient_id"),
