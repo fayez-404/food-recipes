@@ -3,7 +3,7 @@ package fayes.food.recipes.recipe;
 import fayes.food.recipes.recipe.ingredients.Ingredient;
 import fayes.food.recipes.recipe.search_terms.SearchTerm;
 import fayes.food.recipes.recipe.tags.Tag;
-import fayes.food.recipes.recipe.user.UserPrincipal;
+import fayes.food.recipes.user.UserPrincipal;
 import jakarta.persistence.*;
 
 import java.util.List;
