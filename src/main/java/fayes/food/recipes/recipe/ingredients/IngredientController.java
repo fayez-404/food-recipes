@@ -2,7 +2,6 @@ package fayes.food.recipes.recipe.ingredients;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +18,8 @@ public class IngredientController {
 
     @GetMapping("/ingredient")
     @ApiResponse(responseCode = "200",description = "used for the user when he enters a value for ingredient.")
-    public ResponseEntity<List<Ingredient>> getIngredientAndSimilarIngredients(@RequestParam @NotBlank String ingredient){
-        return ResponseEntity.ok().body(ingredientService.getIngredientAndSimilarIngredient(ingredient));
+    public ResponseEntity<Ingredient> getIngredientAndSimilarIngredients(@RequestParam @NotBlank String ingredientRequest){
+        return ResponseEntity.ok().body(ingredientService.getIngredient(ingredientRequest));
     }
 
     @ApiResponse(responseCode = "200",description = "used for the user when writing the ingredient he wants in the input.")

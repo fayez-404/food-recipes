@@ -32,7 +32,8 @@ public class SecurityConfiguration {
                                 ,"/swagger-ui/**"
                                 ,"/v3/api-docs/**"
                                 ,"/v3/api-docs"
-                                ,"/api/v1/refresh-token").permitAll()
+                                ,"/api/v1/refresh-token"
+                                ,"/api/v1/recipe").permitAll()
                         .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)

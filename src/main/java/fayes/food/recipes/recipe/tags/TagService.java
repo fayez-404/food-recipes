@@ -1,10 +1,10 @@
 package fayes.food.recipes.recipe.tags;
 
-import fayes.food.recipes.recipe.search_terms.SearchTerm;
-import fayes.food.recipes.recipe.search_terms.SearchTermRepository;
+import fayes.food.recipes.exception.TagNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TagService {
@@ -14,8 +14,12 @@ public class TagService {
         this.tagRepository = tagRepository ;
     }
 
-    public List<Tag> getTagAndSimilar(String tag){
-        return tagRepository.findSimilarTag(tag);
+    public Tag getTagAndSimilar(String tagRequest){
+        Optional<Tag> tag = tagRepository.findTag(tagRequest);
+        if(tag.isEmpty()){
+            throw new TagNotFoundException("tag: "+tagRequest+" found tag");
+        }
+        return tag.get() ;
     }
 
     public List<Tag> getTagContainTheName(String name){

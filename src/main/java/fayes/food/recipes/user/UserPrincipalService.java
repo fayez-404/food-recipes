@@ -38,4 +38,9 @@ public class UserPrincipalService implements UserDetailsService {
         UserPrincipal newUser = new UserPrincipal(request.getUsername(),request.getEmail(),passwordEncoder.encode(request.getPassword()));
         userRepository.save(newUser);
     }
+
+    public UserResponse retriveUserInfo(UserPrincipal userPrincipal){
+        UserResponse userResponse = new UserResponse(userPrincipal.getUsername(),userPrincipal.getEmail(),userPrincipal.getFavourites());
+        return userResponse ;
+    }
 }

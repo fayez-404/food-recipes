@@ -1,8 +1,10 @@
 package fayes.food.recipes.recipe.ingredients;
 
+import fayes.food.recipes.exception.IngredientNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class IngredientService {
@@ -12,8 +14,12 @@ public class IngredientService {
         this.ingredientRepository = ingredientRepository ;
     }
 
-    public List<Ingredient> getIngredientAndSimilarIngredient(String ingredient){
-        return ingredientRepository.findSimilarIngredients(ingredient);
+    public Ingredient getIngredient(String ingredientRequest){
+        Optional<Ingredient> ingredient = ingredientRepository.findIngredient(ingredientRequest) ;
+        if (ingredient.isEmpty()){
+            throw new IngredientNotFoundException("ingredient: "+ingredientRequest+" Not found");
+        }
+        return ingredient.get();
     }
     public List<Ingredient> getIngredientsContainTheName(String name ){
         return ingredientRepository.findIngredientsStartWithName(name);

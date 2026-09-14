@@ -21,7 +21,7 @@ public class TagController {
     }
     @GetMapping("/tag")
     @ApiResponse(responseCode = "200",description = "used for the user when writing the tag he wants in the input.")
-    public ResponseEntity<List<Tag>> getTagAndSimilarTag(@RequestParam String tag){
+    public ResponseEntity<Tag> getTagAndSimilarTag(@RequestParam String tag){
         return ResponseEntity.ok().body(tagService.getTagAndSimilar(tag));
     }
 

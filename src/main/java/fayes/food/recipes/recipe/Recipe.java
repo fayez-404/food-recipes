@@ -41,6 +41,38 @@ public class Recipe {
         this.id = id;
     }
 
+    public List<Tag> getTag() {
+        return tag;
+    }
+
+    public void setTag(List<Tag> tag) {
+        this.tag = tag;
+    }
+
+    public List<Ingredient> getIngredient() {
+        return ingredient;
+    }
+
+    public void setIngredient(List<Ingredient> ingredient) {
+        this.ingredient = ingredient;
+    }
+
+    public List<SearchTerm> getSearchTerm() {
+        return searchTerm;
+    }
+
+    public void setSearchTerm(List<SearchTerm> searchTerm) {
+        this.searchTerm = searchTerm;
+    }
+
+    public List<UserPrincipal> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserPrincipal> users) {
+        this.users = users;
+    }
+
     public String getName() {
         return name;
     }

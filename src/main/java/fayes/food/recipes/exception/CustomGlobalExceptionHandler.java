@@ -97,6 +97,59 @@ public class CustomGlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorDetails);
     }
 
+    @ExceptionHandler(IngredientNotFoundException.class)
+    public ResponseEntity<ErrorDetails> handeleIngredientNotFoundException(HttpServletRequest request
+            , IngredientNotFoundException ex){
+        ErrorDetails errorDetails = new ErrorDetails(
+          HttpStatus.NOT_FOUND.value(),
+                ex.getMessage(),
+                LocalDateTime.now(),
+                request.getServletPath(),
+                ex.getClass().getName()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDetails);
+    }
+
+    @ExceptionHandler(IngredientsAndTagsEmptyException.class)
+    public ResponseEntity<ErrorDetails> handeleIngredientNotFoundException(HttpServletRequest request
+            , IngredientsAndTagsEmptyException ex){
+        ErrorDetails errorDetails = new ErrorDetails(
+                HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage(),
+                LocalDateTime.now(),
+                request.getServletPath(),
+                ex.getClass().getName()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDetails);
+    }
+
+    @ExceptionHandler(RecipeNotFoundException.class)
+    public ResponseEntity<ErrorDetails> handeleRecipeNotFoundException(HttpServletRequest request
+            , RecipeNotFoundException ex){
+        ErrorDetails errorDetails = new ErrorDetails(
+                HttpStatus.NOT_FOUND.value(),
+                ex.getMessage(),
+                LocalDateTime.now(),
+                request.getServletPath(),
+                ex.getClass().getName()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDetails);
+    }
+
+    @ExceptionHandler(TagNotFoundException.class)
+    public ResponseEntity<ErrorDetails> handeleTagNotFoundException(HttpServletRequest request
+            , TagNotFoundException ex){
+        ErrorDetails errorDetails = new ErrorDetails(
+                HttpStatus.NOT_FOUND.value(),
+                ex.getMessage(),
+                LocalDateTime.now(),
+                request.getServletPath(),
+                ex.getClass().getName()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDetails);
+    }
+
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleException(HttpServletRequest request,
                                                         Exception ex){
@@ -109,4 +162,6 @@ public class CustomGlobalExceptionHandler {
         );
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDetails);
     }
+
+
 }

@@ -77,6 +77,14 @@ public class UserPrincipal implements UserDetails {
         return List.of(new SimpleGrantedAuthority("USER_ROLE"));
     }
 
+    public List<Recipe> getFavourites() {
+        return favourites;
+    }
+
+    public void setFavourites(List<Recipe> favourites) {
+        this.favourites = favourites;
+    }
+
     public String getPassword() {
         return password;
     }
