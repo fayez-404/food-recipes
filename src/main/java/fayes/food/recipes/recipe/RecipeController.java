@@ -24,7 +24,7 @@ public class RecipeController {
         this.recipeService = recipeService ;
     }
 
-    @GetMapping("/recipe")
+    @GetMapping("/recipe/tags-ingredients")
     @Operation(description = "retrives recipes that have these tags and have any ingredient from specified ingredients")
     public ResponseEntity<List<Recipe>> getRecipesByTagsAndIngredients(@RequestParam(required = false) Set<String> ingredients
             ,@RequestParam(required = false) Set<String> tags
@@ -34,17 +34,17 @@ public class RecipeController {
         return ResponseEntity.ok().body(recipeService.retriveRecipes(tags,ingredients,pageable));
     }
 
-    @GetMapping("/recipe")
+    @GetMapping("/recipe/{recipeName}")
     @Operation(description = "retrives recipe with specified name or the most close name if the name doesn't exist")
-    public ResponseEntity<List<Recipe>> getRecipesByName(@RequestParam String recipeName
+    public ResponseEntity<List<Recipe>> getRecipesByName(@PathVariable String recipeName
             ,@RequestParam(required = false,defaultValue = "0") int page
             ,@RequestParam(required = false,defaultValue = "10") int size){
         return ResponseEntity.ok(recipeService.findRecipeAndSimilarRecipes(recipeName,PageRequest.of(page,size)));
     }
 
-    @GetMapping("/recipe")
+    @GetMapping("/recipe/{recipeName}/contains")
     @Operation(description = "retrives recipe that contains the specified name ")
-    public ResponseEntity<List<Recipe>> getRecipesContainsName(@RequestParam String recipeName
+    public ResponseEntity<List<Recipe>> getRecipesContainsName(@PathVariable String recipeName
             ,@RequestParam(required = false,defaultValue = "0") int page
             ,@RequestParam(required = false,defaultValue = "10") int size){
         return ResponseEntity.ok(recipeService.findRecipeContainsName(recipeName,PageRequest.of(page,size)));
