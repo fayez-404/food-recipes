@@ -52,7 +52,6 @@ public class Ingredient {
         return "Ingredient{" +
                 "id=" + id +
                 ", ingredient='" + ingredient + '\'' +
-                ", recipe=" + recipe +
                 '}';
     }
 }

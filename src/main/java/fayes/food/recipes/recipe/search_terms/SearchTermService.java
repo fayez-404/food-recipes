@@ -1,6 +1,5 @@
 package fayes.food.recipes.recipe.search_terms;
 
-import fayes.food.recipes.recipe.ingredients.Ingredient;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +17,6 @@ public class SearchTermService {
     }
 
     public List<SearchTerm> getSearchTermsContainTheName(String name){
-        return searchTermRepository.findSearchTermsStartWithName(name);
+        return searchTermRepository.findSearchTermsContainsName(name);
     }
 }

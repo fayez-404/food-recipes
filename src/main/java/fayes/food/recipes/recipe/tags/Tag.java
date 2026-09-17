@@ -50,7 +50,6 @@ public class Tag {
         return "Tag{" +
                 "id=" + id +
                 ", tag='" + tag + '\'' +
-                ", recipe=" + recipe +
                 '}';
     }
 }

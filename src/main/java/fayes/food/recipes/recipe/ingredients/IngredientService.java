@@ -22,7 +22,7 @@ public class IngredientService {
         return ingredient.get();
     }
     public List<Ingredient> getIngredientsContainTheName(String name ){
-        return ingredientRepository.findIngredientsStartWithName(name);
+        return ingredientRepository.findIngredientsContainsName(name);
     }
 
 }

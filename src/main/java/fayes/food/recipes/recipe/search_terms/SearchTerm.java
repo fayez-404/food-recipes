@@ -51,7 +51,6 @@ public class SearchTerm {
         return "SearchTerm{" +
                 "id=" + id +
                 ", searchTerm='" + searchTerm + '\'' +
-                ", recipe=" + recipe +
                 '}';
     }
 }

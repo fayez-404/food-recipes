@@ -11,13 +11,13 @@ import java.util.Optional;
 public interface IngredientRepository extends JpaRepository<Ingredient,Long>  {
 
     @Query(value = """
-        SELECT * FROM ingredient  WHERE ingredient % :ingredient ORDER BY SIMILARITY(ingredient,:ingredient) DESC LIMIT 1
+        SELECT * FROM ingredient  WHERE ingredient % :ingredient ORDER BY (ingredient = :ingredient) DESC,SIMILARITY(ingredient,:ingredient) DESC LIMIT 1
     """,nativeQuery = true)
     public Optional<Ingredient> findIngredient(String ingredient);
 
     @Query(value = """
     SELECT * FROM ingredient WHERE ingredient LIKE '%'||:name||'%' LIMIT 10
     """,nativeQuery = true)
-    public List<Ingredient> findIngredientsStartWithName(String Name);
+    public List<Ingredient> findIngredientsContainsName(String Name);
 
 }

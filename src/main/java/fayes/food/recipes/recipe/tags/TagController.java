@@ -1,6 +1,5 @@
 package fayes.food.recipes.recipe.tags;
 
-import fayes.food.recipes.recipe.search_terms.SearchTerm;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.ResponseEntity;

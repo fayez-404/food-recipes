@@ -13,5 +13,5 @@ public interface SearchTermRepository extends JpaRepository<SearchTerm,Long> {
     public List<SearchTerm> findSimilarSearchTerms(String search_term);
 
     @Query(value = "SELECT * FROM search_term WHERE search_term LIKE '%'||:name || '%' LIMIT 10",nativeQuery = true)
-    public List<SearchTerm> findSearchTermsStartWithName(String name);
+    public List<SearchTerm> findSearchTermsContainsName(String name);
 }

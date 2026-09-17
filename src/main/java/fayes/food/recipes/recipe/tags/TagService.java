@@ -23,7 +23,7 @@ public class TagService {
     }
 
     public List<Tag> getTagContainTheName(String name){
-        return tagRepository.findTagStartWithName(name);
+        return tagRepository.findTagsContainsName(name);
     }
 
 }

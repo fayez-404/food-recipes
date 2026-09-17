@@ -6,7 +6,7 @@ import fayes.food.recipes.recipe.tags.Tag;
 import fayes.food.recipes.user.UserPrincipal;
 import jakarta.persistence.*;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -21,17 +21,17 @@ public class Recipe {
     private int servings ;
     private String steps ;
 
-    @ManyToMany(mappedBy = "recipe",fetch = FetchType.LAZY)
-    private List<Tag> tag ;
+    @ManyToMany(mappedBy = "recipe")
+    private Set<Tag> tags;
 
-    @ManyToMany(mappedBy = "recipe",fetch = FetchType.LAZY)
-    private List<Ingredient> ingredient ;
+    @ManyToMany(mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
 
-    @ManyToMany(mappedBy = "recipe",fetch = FetchType.LAZY)
-    private List<SearchTerm> searchTerm ;
+    @ManyToMany(mappedBy = "recipe")
+    private Set<SearchTerm> searchTerms;
 
     @ManyToMany(mappedBy = "favourites",fetch = FetchType.LAZY)
-    private List<UserPrincipal> users ;
+    private Set<UserPrincipal> users ;
 
     public Long getId() {
         return id;
@@ -41,35 +41,35 @@ public class Recipe {
         this.id = id;
     }
 
-    public List<Tag> getTag() {
-        return tag;
+    public Set<Tag> getTags() {
+        return tags;
     }
 
-    public void setTag(List<Tag> tag) {
-        this.tag = tag;
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
     }
 
-    public List<Ingredient> getIngredient() {
-        return ingredient;
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public void setIngredient(List<Ingredient> ingredient) {
-        this.ingredient = ingredient;
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
-    public List<SearchTerm> getSearchTerm() {
-        return searchTerm;
+    public Set<SearchTerm> getSearchTerms() {
+        return searchTerms;
     }
 
-    public void setSearchTerm(List<SearchTerm> searchTerm) {
-        this.searchTerm = searchTerm;
+    public void setSearchTerms(Set<SearchTerm> searchTerms) {
+        this.searchTerms = searchTerms;
     }
 
-    public List<UserPrincipal> getUsers() {
+    public Set<UserPrincipal> getUsers() {
         return users;
     }
 
-    public void setUsers(List<UserPrincipal> users) {
+    public void setUsers(Set<UserPrincipal> users) {
         this.users = users;
     }
 
