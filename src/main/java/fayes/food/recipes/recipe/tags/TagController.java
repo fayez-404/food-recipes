@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -20,14 +21,15 @@ public class TagController {
     }
     @GetMapping("/tag")
     @ApiResponse(responseCode = "200",description = "used for the user when writing the tag he wants in the input.")
-    public ResponseEntity<Tag> getTagAndSimilarTag(@RequestParam String tag){
-        return ResponseEntity.ok().body(tagService.getTagAndSimilar(tag));
+    public ResponseEntity<TagResponse> getTagAndSimilarTag(@RequestParam String tag){
+        return ResponseEntity.ok().body(new TagResponse(tagService.getTagAndSimilar(tag)));
     }
 
     @ApiResponse(responseCode = "200",description = "used for the user when writing the tag he wants in the input.")
     @GetMapping("/tag/searching")
-    public ResponseEntity<List<Tag>> getTagThatContainsName(@RequestParam @NotBlank String name){
-        return ResponseEntity.ok().body(tagService.getTagContainTheName(name));
+    public ResponseEntity<List<TagResponse>> getTagThatContainsName(@RequestParam @NotBlank String name){
+        return ResponseEntity.ok().body(tagService.getTagContainTheName(name).stream().map(TagResponse::new)
+                .collect(Collectors.toList()));
     }
 
 }
