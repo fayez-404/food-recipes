@@ -25,8 +25,7 @@ public class CustomGlobalExceptionHandler {
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                request.getServletPath(),
-                ex.getClass().getName()
+                request.getServletPath()
         );
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDetails);
     }
@@ -36,8 +35,7 @@ public class CustomGlobalExceptionHandler {
         ErrorDetails errorDetails = new ErrorDetails(
           HttpStatus.UNAUTHORIZED.value(),
           ex.getMessage(),
-          LocalDateTime.now(), request.getServletPath(),
-          ex.getClass().getName()
+          LocalDateTime.now(), request.getServletPath()
         );
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorDetails);
     }
@@ -48,8 +46,7 @@ public class CustomGlobalExceptionHandler {
                 HttpStatus.CONFLICT.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                request.getServletPath(),
-                ex.getClass().getName()
+                request.getServletPath()
         );
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorDetails);
     }
@@ -65,8 +62,7 @@ public class CustomGlobalExceptionHandler {
           HttpStatus.BAD_REQUEST.value(),
                 message,
                 LocalDateTime.now(),
-                request.getServletPath(),
-                ex.getClass().getName()
+                request.getServletPath()
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDetails);
     }
@@ -78,8 +74,7 @@ public class CustomGlobalExceptionHandler {
                 HttpStatus.UNAUTHORIZED.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                request.getServletPath(),
-                ex.getClass().getName()
+                request.getServletPath()
         );
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorDetails);
     }
@@ -91,8 +86,7 @@ public class CustomGlobalExceptionHandler {
                 HttpStatus.UNAUTHORIZED.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                request.getServletPath(),
-                ex.getClass().getName()
+                request.getServletPath()
         );
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorDetails);
     }
@@ -104,8 +98,7 @@ public class CustomGlobalExceptionHandler {
           HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                request.getServletPath(),
-                ex.getClass().getName()
+                request.getServletPath()
         );
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDetails);
     }
@@ -117,8 +110,7 @@ public class CustomGlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                request.getServletPath(),
-                ex.getClass().getName()
+                request.getServletPath()
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDetails);
     }
@@ -130,8 +122,7 @@ public class CustomGlobalExceptionHandler {
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                request.getServletPath(),
-                ex.getClass().getName()
+                request.getServletPath()
         );
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDetails);
     }
@@ -143,8 +134,7 @@ public class CustomGlobalExceptionHandler {
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                request.getServletPath(),
-                ex.getClass().getName()
+                request.getServletPath()
         );
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDetails);
     }
@@ -157,8 +147,7 @@ public class CustomGlobalExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
-                request.getServletPath(),
-                ex.getClass().getName()
+                request.getServletPath()
         );
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDetails);
     }

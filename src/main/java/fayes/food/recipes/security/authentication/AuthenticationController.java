@@ -14,10 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(
         name= "Authectication"
@@ -70,6 +69,11 @@ public class AuthenticationController {
         String accessToken = authenticationService.refreshAccessToken(refreshTokenRequest);
         AuthenticationResponse response = new AuthenticationResponse(accessToken,refreshTokenRequest.getRefreshToken(),"Bearer");
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<OidcUser> me(@AuthenticationPrincipal OidcUser oidcUser){
+        return ResponseEntity.ok(oidcUser) ;
     }
 
 }

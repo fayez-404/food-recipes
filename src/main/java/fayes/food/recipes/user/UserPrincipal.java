@@ -1,6 +1,7 @@
 package fayes.food.recipes.user;
 
 import fayes.food.recipes.recipe.Recipe;
+import fayes.food.recipes.user.oidc.OauthUser;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,6 +19,9 @@ public class UserPrincipal implements UserDetails {
     private String username ;
     private String email ;
     private String password ;
+
+    @OneToOne(mappedBy = "userPrincipal")
+    private OauthUser oauthUser;
 
     public UserPrincipal() {
     }

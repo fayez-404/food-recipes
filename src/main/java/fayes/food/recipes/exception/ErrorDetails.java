@@ -8,14 +8,12 @@ public class ErrorDetails {
     private String message ;
     private LocalDateTime localDateTime;
     private String path ;
-    private String errorCode;
 
-    public ErrorDetails(int status, String message, LocalDateTime localDateTime, String path, String errorCode) {
+    public ErrorDetails(int status, String message, LocalDateTime localDateTime, String path) {
         this.status = status;
         this.message = message;
         this.localDateTime = localDateTime;
         this.path = path;
-        this.errorCode = errorCode;
     }
 
     public int getStatus() {
@@ -50,14 +48,6 @@ public class ErrorDetails {
         this.path = path;
     }
 
-    public String getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
-    }
-
     @Override
     public String toString() {
         return "ErrorDetails{" +
@@ -65,7 +55,6 @@ public class ErrorDetails {
                 ", message='" + message + '\'' +
                 ", localDateTime=" + localDateTime +
                 ", path='" + path + '\'' +
-                ", errorCoder='" + errorCode + '\'' +
                 '}';
     }
 }
