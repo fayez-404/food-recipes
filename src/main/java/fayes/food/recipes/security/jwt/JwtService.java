@@ -19,13 +19,25 @@ public class JwtService {
 
     private final PrivateKey privateKey ;
     private final PublicKey publicKey;
-    @Value("${application.security.jwt.access_token.expiration}")
-    private Long accessTokenExpiration;
-    @Value("${application.security.jwt.refresh_token.expiration}")
-    private Long refreshTokenExpiration;
-    JwtService() throws NoSuchAlgorithmException, InvalidKeySpecException {
-        this.privateKey = KeyUtils.loadPrivateKey("keys/local/private.key");
-        this.publicKey = KeyUtils.loadPublicKey("keys/local/public.key");
+    private final Long accessTokenExpiration;
+    private final Long refreshTokenExpiration;
+
+    JwtService(@Value("${application.security.jwt.access_token.expiration}")
+               Long accessTokenExpiration,
+
+               @Value("${application.security.jwt.refresh_token.expiration}")
+               Long refreshTokenExpiration,
+
+               @Value("${application.security.private.key.path}")
+               String privateKeyPath,
+
+               @Value("${application.security.public.key.path}")
+               String publicKeyPath) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        this.accessTokenExpiration = accessTokenExpiration;
+        this.refreshTokenExpiration = refreshTokenExpiration;
+
+        this.privateKey = KeyUtils.loadPrivateKey(privateKeyPath);
+        this.publicKey = KeyUtils.loadPublicKey(publicKeyPath);
     }
 
     public Long getAccessTokenExpiration() {
