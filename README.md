@@ -302,7 +302,3 @@ src/
     └── java/
 ```
 
-## License
-
-No license has been specified yet. Add a `LICENSE` file if you intend to
-make the project open source.
